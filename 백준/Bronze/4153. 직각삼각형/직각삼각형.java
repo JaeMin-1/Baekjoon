@@ -13,7 +13,7 @@ public class Main {
         	int y = Integer.parseInt(st.nextToken());
         	int z = Integer.parseInt(st.nextToken());
         	
-        	if(x == 0 && y == 0 && z == 0) return;
+        	if(x == 0 && y == 0 && z == 0) break;
             
         	if((x * x + y * y) == z * z) {
 				System.out.println("right");
