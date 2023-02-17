@@ -19,10 +19,7 @@ public class Main {
         ArrayList<Integer> result = new ArrayList<>();
         int cnt = 0;
         while(list.size()!=0) {
-            cnt += K - 1;
-            if(cnt >= list.size()) {
-                cnt %= list.size();
-            }
+            cnt = (cnt + (K - 1)) % list.size();
             result.add(list.get(cnt));
             list.remove(cnt);
         }
