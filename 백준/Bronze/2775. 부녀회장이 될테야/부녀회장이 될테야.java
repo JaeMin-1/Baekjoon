@@ -1,34 +1,34 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 import java.io.IOException;
+
 public class Main {
-    public static int[][] arr = new int[15][15]; //0~14층:15개, 1~14호 + 맨앞 그냥 비워두기 :15개
+    public static int[][] APT = new int[15][15];
 
     public static void main(String[] args) throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        make_APT();
+
         int T = Integer.parseInt(br.readLine());
 
-        for(int i=1; i<=14; i++) {
-            arr[0][i] = i;
-        }
-
-        while(T != 0) {
+        for (int i = 0; i < T; i++) {
             int k = Integer.parseInt(br.readLine());
             int n = Integer.parseInt(br.readLine());
-            int ans = search(k, n);
-            System.out.println(ans);
-            T--;
+            System.out.println(APT[k][n]);
         }
     }
-    public static int search(int a, int b) {
-        int sum = 0;
-        if(a == 0) return arr[a][b];
-        else {
-            for(int i=b; i>=1; i--) {
-                sum += search(a-1,i);
+
+    public static void make_APT() {
+        for (int i = 0; i < 15; i++) {
+            APT[i][1] = 1;
+            APT[0][i] = i;
+        }
+        for (int i = 1; i < 15; i++) {
+            for (int j = 2; j < 15; j++) {
+                APT[i][j] = APT[i][j - 1] + APT[i - 1][j];
             }
-            return sum;
         }
     }
 }
