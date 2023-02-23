@@ -18,7 +18,7 @@ public class Main {
             boolean isPrime = true;
             if(arr[i] == 1) continue;
 
-            for(int j=2; j<arr[i]; j++) {
+            for(int j=2; j<=Math.sqrt(arr[i]); j++) {
                 if(arr[i] % j == 0) {
                     isPrime = false;
                     break;
