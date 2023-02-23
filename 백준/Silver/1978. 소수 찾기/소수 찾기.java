@@ -12,13 +12,12 @@ public class Main {
         for(int i=0; i<N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
-
         int cnt = 0;
         for(int i=0; i<N; i++) {
             boolean isPrime = true;
             if(arr[i] == 1) continue;
-
-            for(int j=2; j<=Math.sqrt(arr[i]); j++) {
+            
+            for(int j=2; j<arr[i]; j++) {
                 if(arr[i] % j == 0) {
                     isPrime = false;
                     break;
