@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int r, c;
+    static int R, C;
     static char[][] map;
     static boolean[] visited = new boolean[26];
     static int[] dx = {0, 1, 0, -1};
@@ -13,13 +13,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        r = Integer.parseInt(st.nextToken());
-        c = Integer.parseInt(st.nextToken());
+        R = Integer.parseInt(st.nextToken());
+        C = Integer.parseInt(st.nextToken());
 
-        map = new char[r][c];
-        for (int i = 0; i < r; i++) {
+        map = new char[R][C];
+        for (int i = 0; i < R; i++) {
             String str = br.readLine();
-            for (int j = 0; j < c; j++) {
+            for (int j = 0; j < C; j++) {
                 map[i][j] = str.charAt(j);
             }
         }
@@ -38,12 +38,9 @@ public class Main {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
-            if (nx < 0 || nx >= r || ny < 0 || ny >= c) {
-                continue;
-            }
-
-            if (!visited[map[nx][ny] - 'A']) {
-                dfs(nx, ny, cnt + 1);
+            if (nx>=0 && nx<R && ny>=0 && ny<C) {
+                if (!visited[map[nx][ny] - 'A'])
+                    dfs(nx, ny, cnt + 1);
             }
         }
 
