@@ -1,7 +1,6 @@
 class Solution {
     public int solution(int n) {
         int answer = 0;
-        //int number = n;
         for(int a=n; a>=1; a--) {
             int num = n;
             for(int i=a; i>=1; i--) {
