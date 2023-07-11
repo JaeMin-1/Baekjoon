@@ -21,18 +21,14 @@ public class Main {
         answer_num = sum;
         cnt.add(sum);
         for(int i=x; i<n; i++) {
-            sum += arr[i] - arr[i-x];
+            sum += arr[i] - arr[i - x];
             cnt.add(sum);
             answer_num = Math.max(answer_num, sum);
         }
-
-        int max  = 0;
-        for(int num : cnt) {
-            if(num>max) max=num;
-        }
+        
         int answer_cnt = 0;
         for(int num : cnt) {
-            if(num == max) answer_cnt++;
+            if(num == answer_num) answer_cnt++;
         }
 
         if(answer_num == 0) System.out.println("SAD");
@@ -40,5 +36,11 @@ public class Main {
             System.out.println(answer_num);
             System.out.println(answer_cnt);
         }
+
+
+
+
+
+
     }
 }
