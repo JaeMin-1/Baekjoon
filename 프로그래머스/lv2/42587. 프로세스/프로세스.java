@@ -20,17 +20,19 @@ class Solution {
         while(!Q.isEmpty()) {
             boolean most = true;
             Process tmp = Q.poll();
-            for(Process pro : Q) {
-                if(tmp.prior<pro.prior) {
-                    Q.offer(tmp);
+            for(int i=0; i<Q.size(); i++) {
+                Process cur = Q.poll();
+                if(tmp.prior<cur.prior) {
+                    Q.add(cur);
                     most = false;
-                    break;
-                }  
+                }
+                else Q.add(cur);
             }
             if(most) {
                 if(tmp.num == location) return answer;
                 else answer++;
             }
+            else Q.add(tmp);
         }
         
         return answer;
