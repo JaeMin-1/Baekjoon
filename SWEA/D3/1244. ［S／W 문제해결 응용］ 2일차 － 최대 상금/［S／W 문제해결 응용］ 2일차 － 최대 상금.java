@@ -28,7 +28,6 @@ public class Solution {
                 }
             }
         }
-
     }
 
     public static void main(String[] args) throws IOException {
@@ -43,8 +42,9 @@ public class Solution {
             for(int i=0; i<str.length; i++) {
                 arr[i] = Integer.parseInt(str[i]);
             }
-
+			
             int cnt = Integer.parseInt(st.nextToken());
+            //시간 초과를 막는 핵심 코드
             if(arr.length<cnt) cnt = arr.length;
             answer = 0;
             DFS(arr, cnt, 0);
