@@ -2,8 +2,9 @@ import java.io.*;
 import java.util.*;
 
 public class Solution {
-    static int answer;
-    public static void DFS(Integer[] arr, int cnt) {
+    static Integer[] bestArr;
+    static int answer, best, num;
+    public static void DFS(Integer[] arr, int cnt, int start) {
         if(cnt == 0) {
             int sum = 0, num = 1;
             for(int i = arr.length-1; i>=0; i--) {
@@ -15,12 +16,12 @@ public class Solution {
 
         }
         else {
-            for(int i=0; i<arr.length-1; i++) {
+            for(int i=start; i<arr.length-1; i++) {
                 for(int j=i+1; j<arr.length; j++) {
                     int tmp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = tmp;
-                    DFS(arr, cnt-1);
+                    DFS(arr, cnt-1, i);
                     tmp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = tmp;
@@ -46,7 +47,7 @@ public class Solution {
             int cnt = Integer.parseInt(st.nextToken());
             if(arr.length<cnt) cnt = arr.length;
             answer = 0;
-            DFS(arr, cnt);
+            DFS(arr, cnt, 0);
 
             sb.append("#").append(test_case).append(" ").append(answer).append("\n");
         }
