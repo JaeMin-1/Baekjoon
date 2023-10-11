@@ -1,29 +1,33 @@
 import java.io.*;
 import java.util.*;
-
+ 
+class Point {
+    int x,y;
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+ 
 class Solution {
     static int n;
-    static int [][] board;
+    static ArrayList<Point> arr;
     static int answer;
     public static void DFS(int s) {
         if(s==n) answer++;
         else {
             for(int i=0; i<n; i++) {
                 boolean flag = true;
-                for(int j=0; j<s; j++) {
-                    for(int k=0; k<n; k++) {
-                        if(board[j][k] == 1) {
-                            if(i==k || s-j == i-k || s-j == k-i){
-                                flag = false;
-                                break;
-                            }
-                        }
+                for(Point p : arr) {
+                    if(p.x-s == p.y-i || p.x-s == -p.y+i || p.y == i) {
+                        flag = false;
+                        break;
                     }
                 }
                 if(flag) {
-                    board[s][i] = 1;
+                    arr.add(new Point(s,i));
                     DFS(s+1);
-                    board[s][i] = 0;
+                    arr.remove(arr.size()-1);
                 }
             }
         }
@@ -36,10 +40,10 @@ class Solution {
         {
             n = Integer.parseInt(br.readLine());
             answer = 0;
-            board = new int[n][n];
+            arr = new ArrayList<>();
             DFS(0);
             if(n == 1) answer = 1;
-
+ 
             sb.append("#").append(test_case).append(" ").append(answer).append("\n");
         }
         System.out.println(sb);
