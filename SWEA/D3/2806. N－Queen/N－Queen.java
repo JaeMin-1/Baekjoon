@@ -18,8 +18,8 @@ class Solution {
         else {
             for(int i=0; i<n; i++) {
                 boolean flag = true;
-                for(Point p : arr) {
-                    if(p.x-s == p.y-i || p.x-s == -p.y+i || p.y == i) {
+                for(int j=0; j<arr.size(); j++) {
+                    if(arr.get(j).x-s == arr.get(j).y-i || arr.get(j).x-s == -arr.get(j).y+i || arr.get(j).y == i) {
                         flag = false;
                         break;
                     }
