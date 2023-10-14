@@ -2,21 +2,17 @@ import java.io.*;
 import java.util.*;
 
 class Solution {
-    static int[] dx = {-1, 1, 0, 0};
-    static int[] dy = {0, 0, -1, 1};
     static int answer;
     static int[][] arr;
     public static void Solution() {
         for(int j=0; j<100; j++) {
+            boolean flag = false;
             for(int i=0; i<100; i++) {
-                if(arr[i][j] == 1) {
-                    for(int k=i+1; k<100; k++) {
-                        if(arr[k][j] == 2) {
-                            i=k;
-                            answer++;
-                            break;
-                        }
-                    }
+                if(arr[i][j] == 0) continue;
+                else if(arr[i][j] == 1)flag = true;
+                else if(flag && arr[i][j] == 2) {
+                    answer++;
+                    flag = false;
                 }
             }
         }
