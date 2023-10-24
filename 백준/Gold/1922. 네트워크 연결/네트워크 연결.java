@@ -22,8 +22,8 @@ public class Main {
     public static void Union(int a, int b) {
         int fa = Find(a);
         int fb = Find(b);
-        if(fa < fb) unf[fb] = fa;
-        else unf[fa] = fb;
+        if(fa < fb) unf[fa]= fb;
+        else unf[fb] = fa;
     }
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
