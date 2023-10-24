@@ -43,18 +43,17 @@ public class Main {
             return o1.cost - o2.cost;
         });
         int cnt = 0;
-        int bigCost = 0;
         for(Home ob : arr) {
             int fa = Find(ob.v1);
             int fb = Find(ob.v2);
             if(fa!=fb) {
                 answer += ob.cost;
                 Union(ob.v1, ob.v2);
-                bigCost = ob.cost;
                 cnt++;
-                if(cnt == n-1) break;
+                if(cnt == n-2) break;
             }
         }
-        System.out.println(answer-bigCost);
+        if(n==2) answer = 0;
+        System.out.println(answer);
     }
 }
