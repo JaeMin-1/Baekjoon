@@ -4,15 +4,15 @@ import java.util.*;
 class Solution {
     static int n, m;
     static int answer;
-    static ArrayList<ArrayList<Integer>> arr;
+    static int[][] arr;
     static int[] ch;
     public static void Solution(int v, int count) {
         answer = Math.max(answer, count);
-        for(int nv : arr.get(v)) {
-            if(ch[nv] == 0) {
-                ch[nv] = 1;
-                Solution(nv, count+1);
-                ch[nv] = 0;
+        for(int i=1; i<=n; i++) {
+            if(arr[v][i] == 1 && ch[i] == 0) {
+                ch[i] = 1;
+                Solution(i,count+1);
+                ch[i] = 0;
             }
         }
 
@@ -25,20 +25,17 @@ class Solution {
         for(int test_case = 1; test_case <= T; test_case++)
         {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            int n = Integer.parseInt(st.nextToken());
-            int m = Integer.parseInt(st.nextToken());
+            n = Integer.parseInt(st.nextToken());
+            m = Integer.parseInt(st.nextToken());
             ch = new int[n+1];
-            arr = new ArrayList<>();
-            for(int i=0; i<=n; i++) {
-                arr.add(new ArrayList<>());
-            }
+            arr = new int[n+1][n+1];
 
             for(int i=0; i<m; i++) {
                 st = new StringTokenizer(br.readLine());
                 int a = Integer.parseInt(st.nextToken());
                 int b = Integer.parseInt(st.nextToken());
-                arr.get(a).add(b);
-                arr.get(b).add(a);
+                arr[a][b] = 1;
+                arr[b][a] = 1;
             }
 
             answer = 1;
