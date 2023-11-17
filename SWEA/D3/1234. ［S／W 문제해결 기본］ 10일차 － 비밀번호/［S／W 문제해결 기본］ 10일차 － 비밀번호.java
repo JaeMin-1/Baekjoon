@@ -12,9 +12,9 @@ class Solution
 			if(arr.get(i) == arr.get(i+1)) {
 				arr.remove(i);
 				arr.remove(i);
-				i = -1;
+				i = 0;
 			}
-			i++;
+			else i++;
 		}
 		for(char c : arr) {
 			if(c != 'a') {
